@@ -4,7 +4,6 @@ import shutil
 import time, datetime
 import logging
 import numpy as np
-from PIL import Image
 from pathlib import Path
 
 import torch
@@ -18,28 +17,21 @@ class record_config():
         today = datetime.date.today()
 
         self.args = args
-        self.job_dir = Path(args.job_dir)
+        self.result_dir = Path(args.result_dir)
 
         def _make_dir(path):
             if not os.path.exists(path):
                 os.makedirs(path)
 
-        _make_dir(self.job_dir)
+        _make_dir(self.result_dir)
 
-        config_dir = self.job_dir / 'config.txt'
-        #if not os.path.exists(config_dir):
-        if args.resume:
-            with open(config_dir, 'a') as f:
-                f.write(now + '\n\n')
-                for arg in vars(args):
-                    f.write('{}: {}\n'.format(arg, getattr(args, arg)))
-                f.write('\n')
-        else:
-            with open(config_dir, 'w') as f:
-                f.write(now + '\n\n')
-                for arg in vars(args):
-                    f.write('{}: {}\n'.format(arg, getattr(args, arg)))
-                f.write('\n')
+        config_dir = self.result_dir / 'config.txt'
+
+        with open(config_dir, 'w') as f:
+            f.write(now + '\n\n')
+            for arg in vars(args):
+                f.write('{}: {}\n'.format(arg, getattr(args, arg)))
+            f.write('\n')
 
 
 def get_logger(file_path):
