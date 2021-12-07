@@ -29,7 +29,7 @@ python calculate_ci.py \
 
 ##### 1. CIFAR-10
 ```shell
-python evaluate_cifar.py \
+python prune_finetune_cifar.py \
 --data_dir ./data \
 --result_dir ./result/resnet_56/1 \
 --arch resnet_56 \
@@ -46,7 +46,7 @@ python evaluate_cifar.py \
 ```
 ##### 2. ImageNet
 ```shell
-python evaluate_imagenet.py \
+python prune_finetune_imagenet.py \
 --data_dir ./imagenet \
 --result_dir ./result/resnet_50/1 \
 --arch resnet_50 \
