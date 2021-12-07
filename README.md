@@ -68,7 +68,7 @@ TBD.
 ##### ImageNet
 TBD.
 
-#### Tips
+#### Others
 Some codes are based on [link](https://github.com/lmbxmu/HRankPlus).
 
 ## Citation
