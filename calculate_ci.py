@@ -62,7 +62,7 @@ def mean_repeat_ci(repeat, num_layers):
         for i in range(repeat):
             index = j * repeat + i + 1
             # add
-            path_conv = "./conv_feature_map/resnet_{0}_repeat5/conv_feature_map_tensor({1}).npy".format(str(args.num_layers+1), str(index))
+            path_conv = "./conv_feature_map/{0}_repeat5/conv_feature_map_tensor({1}).npy".format(str(args.arch), str(index))
             # path_nuc = "./feature_conv_nuc/resnet_56_repeat5/feature_conv_nuctensor({0}).npy".format(str(index))
             # batch_ci = ci_score(path_conv, path_nuc)
             batch_ci = ci_score(path_conv)
@@ -79,6 +79,8 @@ def main():
     num_layers = args.num_layers
     save_path = 'CI_' + args.arch
     ci = mean_repeat_ci(repeat, num_layers)
+    if args.arch == 'resnet_50':
+        num_layers = 53
     for i in range(num_layers):
         print(i)
         if not os.path.exists(save_path):

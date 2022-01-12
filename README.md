@@ -41,7 +41,7 @@ python calculate_ci.py \
 python calculate_ci.py \
 --arch resnet_50 \
 --repeat 5 \
---num_layers 49
+--num_layers 53
 ```
 
 ### Prune and Fine-tune Models.
