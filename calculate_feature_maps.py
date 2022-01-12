@@ -95,6 +95,19 @@ def get_feature_hook(self, input, output):
             output.cpu().numpy())
     conv_index += 1
 
+
+def get_double_feature_hook(self, input, output):
+    global conv_index
+
+    if not os.path.isdir('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat)):
+        os.makedirs('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat))
+    np.save('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat) + '/conv_feature_map_'+ str(conv_index) + '.npy',
+            output.cpu().numpy())
+    conv_index += 1
+    np.save('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat) + '/conv_feature_map_' + str(conv_index) + '.npy',
+        output.cpu().numpy())
+    conv_index += 1
+
 def inference():
     model.eval()
     repeat = args.repeat
@@ -172,7 +185,6 @@ elif args.arch=='resnet_110':
             cnt += 1
 
 elif args.arch=='resnet_50':
-
     cov_layer = eval('model.maxpool')
     handler = cov_layer.register_forward_hook(get_feature_hook)
     inference()
@@ -195,10 +207,11 @@ elif args.arch=='resnet_50':
             handler.remove()
             cnt += 1
 
-            cov_layer = block[j].relu3
-            handler = cov_layer.register_forward_hook(get_feature_hook)
-            inference()
-            handler.remove()
             if j==0:
-                cnt += 1
+                cov_layer = block[j].relu3
+                handler = cov_layer.register_forward_hook(get_double_feature_hook)
+                inference()
+                handler.remove()
+            # if j==0:
+            #     cnt += 1
             cnt += 1
