@@ -33,13 +33,15 @@ python calculate_feature_maps.py \
 ```shell
 python calculate_ci.py \
 --arch resnet_56 \
---repeat 5
+--repeat 5 \
+--num_layers 55
 ```
 ##### 2. ImageNet
 ```shell
 python calculate_ci.py \
 --arch resnet_50 \
---repeat 5
+--repeat 5 \
+--num_layers 49
 ```
 
 ### Prune and Fine-tune Models.
@@ -90,5 +92,4 @@ TBD.
 Codes are based on [link](https://github.com/lmbxmu/HRankPlus).
 
 ## Citation
-
 TBD.
