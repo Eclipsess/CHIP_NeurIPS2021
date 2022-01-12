@@ -13,6 +13,12 @@ parser.add_argument(
     help='architecture to calculate feature maps')
 
 parser.add_argument(
+    '--repeat',
+    type=int,
+    default=5,
+    help='repeat times')
+
+parser.add_argument(
     '--num_layers',
     type=int,
     default=55,
@@ -31,8 +37,8 @@ def reduced_1_row_norm(input, row_index, data_index):
     m = torch.norm(input[data_index, :, :], p = 'nuc').item()
     return m
 
-def ci_score(path_conv, path_nuc):
-    conv_output = np.round(np.load(path_conv), 4)
+def ci_score(path_conv):
+    conv_output = torch.tensor(np.round(np.load(path_conv), 4))
     conv_reshape = conv_output.reshape(conv_output.shape[0], conv_output.shape[1], -1)
 
     r1_norm = torch.zeros([conv_reshape.shape[0], conv_reshape.shape[1]])
@@ -56,9 +62,10 @@ def mean_repeat_ci(repeat, num_layers):
         for i in range(repeat):
             index = j * repeat + i + 1
             # add
-            path_conv = "./feature_conv/resnet_56_repeat5/feature_convtensor({0}).npy".format(str(index))
-            path_nuc = "./feature_conv_nuc/resnet_56_repeat5/feature_conv_nuctensor({0}).npy".format(str(index))
-            batch_ci = ci_score(path_conv, path_nuc)
+            path_conv = "./conv_feature_map/resnet_56_repeat5/conv_feature_map_tensor({0}).npy".format(str(index))
+            # path_nuc = "./feature_conv_nuc/resnet_56_repeat5/feature_conv_nuctensor({0}).npy".format(str(index))
+            # batch_ci = ci_score(path_conv, path_nuc)
+            batch_ci = ci_score(path_conv)
             single_repeat_ci_mean = np.mean(batch_ci, axis=0)
             repeat_ci_mean.append(single_repeat_ci_mean)
 
@@ -70,9 +77,10 @@ def mean_repeat_ci(repeat, num_layers):
 def main():
     repeat = args.repeat
     num_layers = args.num_layers
-    save_path = 'CI' + args.arch
+    save_path = 'CI_' + args.arch
     ci = mean_repeat_ci(repeat, num_layers)
     for i in range(num_layers):
+        print(i)
         if not os.path.exists(save_path):
             os.mkdir(save_path)
         np.save(save_path + "/ci_conv{0}.npy".format(str(i + 1)), ci[i])

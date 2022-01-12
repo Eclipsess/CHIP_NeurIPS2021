@@ -12,6 +12,7 @@ import torch.nn as nn
 import torch.utils
 import torch.backends.cudnn as cudnn
 import torch.utils.data.distributed
+from models.resnet_imagenet import resnet_50
 
 from data import imagenet
 import utils
@@ -46,7 +47,7 @@ parser.add_argument(
 parser.add_argument(
     '--epochs',
     type=int,
-    default=120,
+    default=200,
     help='num of training epochs')
 
 parser.add_argument(
@@ -403,9 +404,6 @@ def main():
 
         train_obj, train_top1_acc,  train_top5_acc = train(epoch,  train_loader, model, criterion_smooth, optimizer, scaler)
         valid_obj, valid_top1_acc, valid_top5_acc = validate(epoch, val_loader, model, criterion, args)
-        if args.use_dali:
-            train_loader.reset()
-            val_loader.reset()
 
         is_best = False
         if valid_top1_acc > best_top1_acc:
@@ -511,7 +509,6 @@ def validate(epoch, val_loader, model, criterion, args):
                     .format(top1=top1, top5=top5))
 
     return losses.avg, top1.avg, top5.avg
-
 
 if __name__ == '__main__':
   main()

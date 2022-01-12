@@ -6,6 +6,9 @@ import torch.nn as nn
 import torch.backends.cudnn as cudnn
 from data import cifar10, imagenet
 import time
+from models.resnet_cifar10 import resnet_56,resnet_110
+from models.resnet_imagenet import resnet_50
+
 
 parser = argparse.ArgumentParser(description='Calculate Feature Maps')
 
@@ -62,7 +65,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # prepare data
 if args.dataset=='cifar10':
-    train_loader = cifar10.load_cifar_data(args)
+    train_loader, _ = cifar10.load_cifar_data(args)
 elif args.dataset=='imagenet':
     data_tmp = imagenet.Data(args)
     train_loader = data_tmp.train_loader
@@ -88,7 +91,7 @@ def get_feature_hook(self, input, output):
 
     if not os.path.isdir('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat)):
         os.makedirs('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat))
-    np.save('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat) + '/conv_feature_map'+ str(conv_index) + '.npy',
+    np.save('conv_feature_map/' + args.arch + '_repeat%d' % (args.repeat) + '/conv_feature_map_'+ str(conv_index) + '.npy',
             output.cpu().numpy())
     conv_index += 1
 

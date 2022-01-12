@@ -12,6 +12,7 @@ import torch.nn as nn
 import torch.utils
 import torch.backends.cudnn as cudnn
 import torch.utils.data.distributed
+from models.resnet_cifar10 import resnet_56,resnet_110
 
 from data import cifar10
 import utils
@@ -332,7 +333,7 @@ def main():
     logger.info('Flops: %.2f' % (flops))
 
     # load training data
-    train_loader, val_loader = cifar10.load_data(args)
+    train_loader, val_loader = cifar10.load_cifar_data(args)
 
     criterion = nn.CrossEntropyLoss()
     criterion = criterion.cuda()
