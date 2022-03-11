@@ -8,7 +8,20 @@
 
 ## Usage
 
+## Citation
+```
+@article{sui2021chip,
+  title={CHIP: CHannel Independence-based Pruning for Compact Neural Networks},
+  author={Sui, Yang and Yin, Miao and Xie, Yi and Phan, Huy and Aliari Zonouz, Saman and Yuan, Bo},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  year={2021}
+}
+```
+
 ### Generate Feature Maps.
+This procedure is time-consuming, please be patient. 
+
 ##### 1. CIFAR-10
 ```shell
 python calculate_feature_maps.py \
@@ -86,18 +99,41 @@ python prune_finetune_imagenet.py \
 - [Pre-trained Models](https://drive.google.com/drive/folders/1b--dZlvKUUu0rXqMYAtIr0ynHQHuEWDI?usp=sharing)
    - CIFAR-10: VGG-16_BN, ResNet-56, ResNet-110.
    - ImageNet: ResNet-50.
-
+   
 ### Results
-##### CIFAR-10
-TBD.
 
-##### ImageNet
-TBD.
+Some of results are better than papers.
+
+##### CIFAR-10
+
+We release our CIFAR-10 training logs for more epochs which can achieve better results than paper. Training logs can be found at [link](https://drive.google.com/drive/folders/1Je2wff9QhoxAeZTGxa19L_zcvB7qWne0?usp=sharing).
+
+| Architecture | Params (Reduction)       | Flops  (Reduction)        |  Accuracy | Sparsity                                              |
+|:----------:|:-------------:|:--------------:|:--------:|:------------------------------------------------------------:|
+| ResNet-56(Baseline)   | 0.85M(0.0%) | 125.49M(0.0%) |  93.26%   |  N/A |
+| ResNet-56   | 0.48M(42.8%) | 65.94M(47.4%) | 94.16%   | [0.]+[0.15]*2+[0.4]*27 |
+| ResNet-56   | 0.24M(70.0%) | 34.78M(74.1%) | 92.43%  | [0.]+[0.4]*2+[0.5]*9+[0.6]*9+[0.7]*9 |
+| ResNet-110(Baseline)   | 1.72M(0.0%) | 252.89M(0.0%) |  93.50%   | N/A |
+| ResNet-110   | 1.04M(39.1%) | 140.54M(44.4%) |  94.20%  | [0.]+[0.2]*2+[0.3]*18+[0.35]*36 |
+| ResNet-110   | 0.54M(68.3%) | 71.69M(71.6%) |  93.23%  | [0.]+[0.4]*2+[0.5]*18+[0.65]*36 |
+| VGG-16-BN(Baseline)      | 14.98M(0.0%) | 313.73M(0.0%) | 93.96%   | N/A |
+| VGG-16-BN      | 2.76M(81.6%) | 131.17M(58.1%) | 93.86%   | [0.21]*7+[0.75]*5 |
+| VGG-16-BN      | 2.50M(83.3%) | 104.78M(66.6%) | 93.72%   | [0.3]*7+[0.75]*5 |
+| VGG-16-BN      | 1.90M(87.3%) | 66.95M(78.6%) | 93.18%    | [0.45]*7+[0.78]*5 |
+
+
+##### ImageNet 
+| Architecture | Params  (Reduction)      | Flops (Reduction)     | Lr Type | Top-1 Accuracy | Top-5 Accuracy | Model |
+|:----------:|:-------------:|:--------------:|:--------:|:------------------:|:----------------------------:|:---:|
+| ResNet-50(baseline)  |       25.55M(0.0%)          |      4.11B(0.0%)      |  |   76.15%      |       92.87%         | N/A |
+| ResNet-50  |       15.09M(40.8%)          |      2.26B(44.8%)      | cos |  76.41%      |       92.63%         | [0.]+[0.1]*3+[0.35]*16 |
+| ResNet-50  |       14.28M(44.2%)          |      2.19B(48.7%)      | cos |   76.35%      |       93.05%         | [0.]+[0.12]*3+[0.38]*16 |
+| ResNet-50  |       11.05M(56.7%)          |      1.52B(62.8%)     | cos |   75.26%    | 92.53% | [0.]+[0.25]*3+[0.5]*16 |
+| ResNet-50  |       8.02M(68.6%)          |      0.95B(76.7%)      |  cos | 73.30%      |      91.48%         | [0.]+[0.5]*3+[0.6]*16|
+
 
 ## Others
 Codes are based on [link](https://github.com/lmbxmu/HRankPlus).
 
 Since I rearranged my original codes for simplicity, please feel free to open an issue if something wrong happens when you run the codes. (Please forgive me for the late response and wait for me to respond to your problems in several days.)
 
-## Citation
-TBD.
