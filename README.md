@@ -81,6 +81,13 @@ python prune_finetune_imagenet.py \
 --sparsity [0.]+[0.1]*3+[0.35]*16 \
 --gpu 0
 ```
+
+## Pre-trained Models
+
+- [Pre-trained Models](https://drive.google.com/drive/folders/1b--dZlvKUUu0rXqMYAtIr0ynHQHuEWDI?usp=sharing)
+   - CIFAR-10: VGG-16_BN, ResNet-56, ResNet-110.
+   - ImageNet: ResNet-50.
+
 ### Results
 ##### CIFAR-10
 TBD.
