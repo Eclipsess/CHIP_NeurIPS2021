@@ -108,8 +108,8 @@ Some of results are better than papers.
 
 We release our CIFAR-10 training logs for more epochs which can achieve better results than paper. Training logs can be found at [link](https://drive.google.com/drive/folders/1Je2wff9QhoxAeZTGxa19L_zcvB7qWne0?usp=sharing).
 
-| Model | # of Params (Reduction)       | Flops  (Reduction)        |  Top-1 Accuracy | Sparsity Setting                                             |
-|:----------:|:-------------:|:--------------:|:--------:|:------------------------------------------------------------:|
+| Model <img width=60/>  | # of Params (Reduction)      | Flops  (Reduction)        |  Top-1 Accuracy | Sparsity Setting                                           |
+|:-------------------:|:---:|:--------------:|:--------:|:------------------------------------------------------------:|
 | ResNet-56   | 0.85M(0.0%) | 125.49M(0.0%) |  93.26%   |  N/A |
 | ResNet-56   | 0.48M(42.8%) | 65.94M(47.4%) | 94.16%   | [0.]+[0.15]*2+[0.4]*27 |
 | ResNet-56   | 0.24M(70.0%) | 34.78M(74.1%) | 92.43%  | [0.]+[0.4]*2+[0.5]*9+[0.6]*9+[0.7]*9 |
@@ -123,7 +123,7 @@ We release our CIFAR-10 training logs for more epochs which can achieve better r
 
 
 ##### ImageNet 
-| Model | # of Params  (Reduction)      | Flops (Reduction)     | Top-1 Accuracy | Top-5 Accuracy | Sparsity Setting |
+| Model <img width=60/> | # of Params  (Reduction)      | Flops (Reduction)     | Top-1 Accuracy | Top-5 Accuracy | Sparsity Setting |
 |:----------:|:-------------:|:--------------:|:------------------:|:----------------------------:|:---:|
 | ResNet-50  |       25.55M(0.0%)          |      4.11B(0.0%)      |   76.15%      |       92.87%         | N/A |
 | ResNet-50  |       15.09M(40.8%)          |      2.26B(44.8%)       |  76.41%      |       92.63%         | [0.]+[0.1]*3+[0.35]*16 |
