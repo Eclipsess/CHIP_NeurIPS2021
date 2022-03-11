@@ -1,4 +1,3 @@
-# In Progress
 # CHIP: CHannel Independence-based Pruning for Compact Neural Networks
 
 ## Code for our NeurIPS 2021 paper: ([CHIP: CHannel Independence-based Pruning for Compact Neural Networks](https://arxiv.org/abs/2110.13981))![visitors](https://visitor-badge.glitch.me/badge?page_id=yangsui.chip&left_color=green&right_color=red).
@@ -97,6 +96,8 @@ TBD.
 
 ## Others
 Codes are based on [link](https://github.com/lmbxmu/HRankPlus).
+
+Since I rearranged my original codes for simplicity, please feel free to open an issue if something wrong happens when you run the codes. (Please forgive me for the late response and wait for me to respond to your problems in several days.)
 
 ## Citation
 TBD.
