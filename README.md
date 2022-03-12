@@ -106,7 +106,9 @@ Some of results are better than papers.
 
 ##### CIFAR-10
 
-We release our CIFAR-10 training logs for more epochs which can achieve better results than paper. Training logs can be found at [link](https://drive.google.com/drive/folders/1Je2wff9QhoxAeZTGxa19L_zcvB7qWne0?usp=sharing).
+We release our training logs of ResNet-56/110 model on CIFAR-10 for more epochs which can achieve better results than paper. 
+We release our training logs of ResNet-50 model on ImageNet. 
+Training logs can be found at [link](https://drive.google.com/drive/folders/1Je2wff9QhoxAeZTGxa19L_zcvB7qWne0?usp=sharing).
 
 | Model <img width=60/>  | # of Params (Reduction)      | Flops  (Reduction)        |  Top-1 Accuracy | Sparsity Setting                                           |
 |:-------------------:|:---:|:--------------:|:--------:|:------------------------------------------------------------:|
