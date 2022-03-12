@@ -104,7 +104,7 @@ python prune_finetune_imagenet.py \
 
 We release our training logs of ResNet-56/110 model on CIFAR-10 for more epochs which can achieve better results than paper. 
 We release our training logs of ResNet-50 model on ImageNet. 
-Training logs can be found at [link](https://drive.google.com/drive/folders/1Je2wff9QhoxAeZTGxa19L_zcvB7qWne0?usp=sharing).
+Training logs can be found at [link](https://drive.google.com/drive/folders/1qhHxu2AIayUBejbuHuEoGt1-i32DTJRv?usp=sharing).
 Some results are better than papers.
 
 ##### CIFAR-10
