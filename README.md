@@ -20,7 +20,6 @@
 ```
 
 ### Generate Feature Maps.
-This procedure is time-consuming, please be patient. 
 
 ##### 1. CIFAR-10
 ```shell
@@ -41,6 +40,9 @@ python calculate_feature_maps.py \
 --gpu 0
 ```
 ### Generate Channel Independence (CI).
+
+This procedure is time-consuming, please be patient.
+
 ##### 1. CIFAR-10
 ```shell
 python calculate_ci.py \
