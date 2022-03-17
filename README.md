@@ -68,7 +68,7 @@ python prune_finetune_cifar.py \
 --arch resnet_56 \
 --ci_dir ./CI_resnet_56 \
 --batch_size 256 \
---epochs 200 \
+--epochs 400 \
 --lr_type cos \
 --learning_rate 0.01 \
 --momentum 0.99 \
@@ -85,7 +85,7 @@ python prune_finetune_imagenet.py \
 --arch resnet_50 \
 --ci_dir ./CI_resnet_50 \
 --batch_size 256 \
---epochs 200 \
+--epochs 180 \
 --lr_type cos \
 --learning_rate 0.01 \
 --momentum 0.99 \
