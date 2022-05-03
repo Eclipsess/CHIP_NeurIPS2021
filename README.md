@@ -71,8 +71,8 @@ python prune_finetune_cifar.py \
 --epochs 400 \
 --lr_type cos \
 --learning_rate 0.01 \
---momentum 0.99 \
---weight_decay 0.001 \
+--momentum 0.9 \
+--weight_decay 0.005 \
 --pretrain_dir ./pretrained_models/resnet_56.pt \
 --sparsity [0.]+[0.4]*2+[0.5]*9+[0.6]*9+[0.7]*9 \
 --gpu 0 
