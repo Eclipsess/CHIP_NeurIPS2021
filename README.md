@@ -8,17 +8,6 @@
 
 ## Usage
 
-## Citation
-```
-@article{sui2021chip,
-  title={CHIP: CHannel Independence-based Pruning for Compact Neural Networks},
-  author={Sui, Yang and Yin, Miao and Xie, Yi and Phan, Huy and Aliari Zonouz, Saman and Yuan, Bo},
-  journal={Advances in Neural Information Processing Systems},
-  volume={34},
-  year={2021}
-}
-```
-
 ### Generate Feature Maps.
 
 ##### 1. CIFAR-10
